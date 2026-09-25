@@ -6,13 +6,23 @@
 
 int main(){
     char *itens[MAX_ITENS] = {"sword", "healing_potion", "backpack", "shield", "clothes"};
+    char target[20] = "";
 
-    printf("todos os itens do inventario: \n");
+    printf("que item gostaria de procurar??? \n");
+    scanf("%20s", target);
+
+    printf("procurando %s no inventario: \n", target);
 
     for(int i = 0; i < MAX_ITENS; i++){
-        printf("%s\n", itens[i]);
+        // printf("%s\n", itens[i]);
+        printf(".\n");
+
+        if(strcmp(itens[i], target) == 0){
+            printf("%s encontrado! \n", target);
+            return 0;
+        }
     }
 
-    printf("\né isso :'3\n");
+    printf("\n item não encontrado T.T \n");
     return 0;
 }
