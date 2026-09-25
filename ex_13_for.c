@@ -9,7 +9,7 @@ int main(){
 
     printf("todos os itens do inventario: \n");
 
-    for(int i = 0; i < MAX_ITENS - 1; i++){
+    for(int i = 0; i < MAX_ITENS; i++){
         printf("%s\n", itens[i]);
     }
 
