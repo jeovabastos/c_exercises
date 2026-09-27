@@ -21,4 +21,13 @@ int main(){
     printf("acreano.nome: %s \n", acreano.nome);
     printf("acreano.atk: %d \n", acreano.atk);
     printf("acreano.recursos: %.2f \n", acreano.recursos);
+
+    player vera;
+    strcpy(vera.nome, "vera von stral");
+    vera.atk = 4;
+    vera.recursos = 8942.61;
+
+    printf("vera.nome: %s \n", vera.nome);
+    printf("vera.atk: %d \n", vera.atk);
+    printf("vera.recursos: %.2f \n", vera.recursos);
 }
