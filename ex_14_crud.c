@@ -20,7 +20,7 @@ int main(){
         printf("2 - procurar item \n");
         printf("3 - listar itens \n");
         printf("0 - sair do inventário \n");
-        printf("escolha uma opção \n");            
+        printf("escolha uma opção \n\n");            
         
         if(scanf("%d", &option) != 1){
             limpar_buffer();
@@ -35,46 +35,50 @@ int main(){
                 int adicionado = 0;
                 for (int i = 0; i < MAX_ITENS; i++){
                     if(backpack[i][0] == '\0'){
-                        printf("nome do item a adicionar: \n");
+                        printf("\nnome do item a adicionar: \n");
+                        // para permitir espaços em branco, use scanf("%19[^\n]", backpack[i]);
                         scanf("%19s", backpack[i]);
+                        
+                        // O limpar_buffer() deve ser executado uma única vez, imediatamente após cada leitura (scanf).
+                        // Ele serve para "limpar a sujeira da leitura que acabou de acontecer", e não para "preparar a leitura que vai acontecer no futuro".
                         limpar_buffer();
             
-                        printf("'%s' adicionado a backpack na posição [%d]\n", backpack[i], i);
+                        printf("\n'%s' adicionado a backpack na posição [%d]\n", backpack[i], i);
                         adicionado = 1;
                         break;
                     }
                 }
 
                 if (!adicionado) {
-                    printf("\n-> A mochila esta cheia! (Max: %d itens)\n", MAX_ITENS);
+                    printf("\n->A mochila esta cheia! (Max: %d itens)\n", MAX_ITENS);
                 }
         
                 break;
             
             case 2:
                 // procurar item
-                printf("que item gostaria de procurar? \n");
+                printf("\nque item gostaria de procurar? \n");
                 scanf("%19s", target);
         
-                printf("procurando item %s no inventário... \n", target);
+                printf("\nprocurando item %s no inventário... \n", target);
                 int encontrado = 0;
                 for(int i = 0; i < MAX_ITENS; i++){
                     printf(".\n");
         
                     if(backpack[i] != NULL && strcmp(backpack[i], target) == 0){
-                        printf("%s encontrado! \n", target);
+                        printf("\n%s encontrado! \n", target);
                         encontrado = 1;
                         break;
                     }
                 }
         
                 if (!encontrado) {
-                    printf("-> Item '%s' não encontrado na mochila T.T\n", target);
+                    printf("\n->Item '%s' não encontrado na mochila T.T\n", target);
                 }
                 break;
 
             case 3:
-                printf("lista de itens: \n");
+                printf("\nlista de itens: \n");
                 for(int i = 0; i < MAX_ITENS; i++){
                     if(backpack[i][0] != '\0'){
                         printf("%s na posição %d \n", backpack[i], i);
@@ -84,11 +88,11 @@ int main(){
                 }
 
             case 0:
-                printf("fechando a backpack \n");
+                printf("\nfechando a backpack \n");
                 break;  
         
             default:
-                printf("opção inválida \n");
+                printf("\nopção inválida \n");
                 break;
         }
     }
